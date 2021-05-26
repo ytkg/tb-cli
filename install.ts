@@ -1,6 +1,14 @@
 if (import.meta.main) {
   const p = Deno.run({
-    cmd: ["deno", "install", "-f", "tb.ts"],
+    cmd: [
+      "deno",
+      "install",
+      "--allow-read",
+      "--allow-net",
+      "--allow-run",
+      "-f",
+      "tb.ts",
+    ],
     stdout: "null",
     stderr: "inherit",
   });
