@@ -4,6 +4,7 @@ if (import.meta.main) {
       "deno",
       "install",
       "--allow-read",
+      "--allow-write",
       "--allow-net",
       "--allow-run",
       "-f",

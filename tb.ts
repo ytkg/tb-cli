@@ -3,6 +3,7 @@ import { VERSION } from "./version.ts";
 
 const commands = {
   "open": "open takagi.blog",
+  "new": "create new article"
 };
 
 async function main() {
@@ -19,6 +20,10 @@ async function main() {
 
   const command = args.shift();
   const { default: cmd } = await import(`./cli/${command}.ts`);
+
+  if (command === "new") {
+    await cmd(args[0], Boolean(options.f || options.force));
+  }
 
   await cmd();
 }
