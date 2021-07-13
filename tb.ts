@@ -3,7 +3,8 @@ import { VERSION } from "./version.ts";
 
 const commands = {
   "open": "open takagi.blog",
-  "new": "create new article"
+  "new": "create new article",
+  "kebab": "convert to kebab-case",
 };
 
 async function main() {
@@ -23,6 +24,10 @@ async function main() {
 
   if (command === "new") {
     await cmd(args[0], Boolean(options.f || options.force));
+  }
+
+  if (command === "kebab") {
+    await cmd(args[0]);
   }
 
   await cmd();
