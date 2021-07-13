@@ -1,10 +1,6 @@
-export default async function (text: string) {
-  console.log(await KebabCase(text));
-  Deno.exit(0);
-}
+import toKebabCase from "./helpers/to-kebab-case.ts";
 
-function KebabCase(text: string): string {
-  return text.replace(/([a-z])([A-Z])/g, "$1-$2")
-    .replace(/[\s_]+/g, "-")
-    .toLowerCase();
+export default function (text: string) {
+  console.log(toKebabCase(text));
+  Deno.exit(0);
 }
