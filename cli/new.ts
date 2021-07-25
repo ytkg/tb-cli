@@ -12,13 +12,15 @@ export default async function (fileName: string, forceNew: boolean) {
   const filePath = `content/blog/${toKebabCase(fileName)}.md`;
   const fileExists = existsSync(filePath);
   if (fileExists && !forceNew) {
-    console.log("File already exists. with --force to overwrite files recklessly.");
+    console.log(
+      "File already exists. with --force to overwrite files recklessly.",
+    );
     Deno.exit(1);
   }
 
   const date = format(new Date(), "yyyy-MM-dd");
-  const template = `---\ntitle: \ndate: ${date}\ntags: [""]\n---`
-  await Deno.writeTextFile(filePath, template)
+  const template = `---\ntitle: \ndate: ${date}\ntags: [""]\n---`;
+  await Deno.writeTextFile(filePath, template);
 
   if (forceNew) {
     console.log(`Recreate ${filePath}`);
