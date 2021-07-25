@@ -1,5 +1,6 @@
 import { format } from "https://deno.land/std@0.97.0/datetime/mod.ts";
 import { existsSync } from "https://deno.land/std@0.97.0/fs/exists.ts";
+import toKebabCase from "./helpers/to-kebab-case.ts";
 
 export default async function (fileName: string, forceNew: boolean) {
   if (fileName === undefined) {
@@ -8,7 +9,7 @@ export default async function (fileName: string, forceNew: boolean) {
     Deno.exit(1);
   }
 
-  const filePath = `content/blog/${fileName}.md`;
+  const filePath = `content/blog/${toKebabCase(fileName)}.md`;
   const fileExists = existsSync(filePath);
   if (fileExists && !forceNew) {
     console.log("File already exists. with --force to overwrite files recklessly.");
